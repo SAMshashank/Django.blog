@@ -1,52 +1,99 @@
-
 {% load static %}
     <!-- Sidebar Widgets Column -->
-      <div class="col-md-5">
-
-        <!-- Search Widget -->
-        <div class="card my-5">
-          <h5 class="card-header">Search</h5>
+    <style>
+      @keyframes fadeIn {
+          0% {opacity: 0;}
+          100% {opacity: 1;}
+      }
+  
+      .card {
+          margin: 0;
+          background-color: #f8f9fa;
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+          animation: fadeIn 1s ease-in-out;
+      }
+  
+      .card-header {
+          font-size: 1.2em;
+          font-weight: bold;
+          background-color: #007bff;
+          color: white;
+      }
+  
+      .card-body {
+          padding: .5em;
+      }
+  
+      .input-group {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+  
+      .list-unstyled {
+          padding: 0;
+          margin: 0;
+          list-style-type: none;
+      }
+  
+      .list-unstyled li a {
+          color: #007bff;
+          text-decoration: none;
+      }
+  
+      .list-unstyled li a:hover {
+          background-color: #007bff;
+          color: white;
+      }
+  </style>
+  
+  <div class="col-md-5">
+      <!-- Search Widget -->
+      <div class="card">
+          <h3 class="card-header">Search</h3>
           <div class="card-body">
-            <div class="input-group">
-
-             <!--search -->
-              <form class="form-inline my-2 my-lg-0" action='/search/'>
-              <input type="search" name='q' class="form-control" placeholder="Search for">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-success" >Go</button>
-              </span>
-              </form>
-              <!--search /-->
-
-            </div>
+              <div class="input-group">
+                  <!--search -->
+                  <form class="form-inline my-2 my-lg-0" action='/search/'>
+                      <input type="search" name='q' class="form-control" placeholder="Search for">
+                      <span class="input-group-btn">
+                          <button type="submit" class="btn btn-success">Go</button>
+                      </span>
+                  </form>
+                  <!--search /-->
+              </div>
           </div>
-        </div>
-
-        <!-- Categories Widget -->
-        <div class="card my-5">
-          <h5 class="card-header" style='color:green;'>Categories</h5>
+      </div>
+  
+      <!-- Categories Widget -->
+      <div class="card">
+          <h5 class="card-header">Categories</h5>
           <div class="card-body">
-            <div class="row">
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                {% for cat  in cats %}
-                <li>
-                    <a href="/blog/category/{{cat.name}}/">{{cat.name}}</a>
-                  </li>
-                {% endfor %}
-                   </div>
-            </div>
+              <div class="row">
+                  <div class="col-lg-6">
+                      <ul class="list-unstyled mb-0">
+                          {% for cat  in cats %}
+                              <li>
+                                  <a href="/blog/category/{{cat.name}}/">{{cat.name}}</a>
+                              </li>
+                          {% endfor %}
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
+      </div>
+  </div>
+  
+
+  
 <!-- Categories Widget/ -->
                   
 
         <!-- Side Widget -->
-        <div class="card my-4">
+        <!-- <div class="card my-4">
           <h5 class="card-header">Side Widget</h5>
           <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-          </div>
-        </div>
+            
+        </div> -->
 
    <!-- Side Widget/ -->

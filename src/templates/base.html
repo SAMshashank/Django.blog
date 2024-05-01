@@ -1,166 +1,204 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <title>Jp</title>
-  
+  <title>Blog</title>
   
   <!-- Bootstrap core CSS -->
-  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css '%}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href=" {% static ' vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="{% static 'css/clean-blog.min.css '%}" rel="stylesheet">
+  <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
 
-</head>
+  <style>
+    .brand {
+    background-color: none; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: right; /* Center-align text */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px; /* Increase font size */
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
-<body>
-<!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'home' %}">Jp NaN</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-         
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>           
-          </li>
+    }
 
-         <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog'%}">Blog</a>
-          </li>
+    .nav-links {
+      background-color: #f9f9f9;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      position: absolute;
+      min-width: 160px;
+      width: 100%;
+      display: flex;
+    }
 
-          {% if request.user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'dashboard'%}">Dashboard</a>
-          </li>
+    .nav-links a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: inline-block;
+      background-color: rgb(92, 48, 251);
+      color: white;
+    }
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'add_new'%}">New Post</a>
-          </li>
+    .nav-item {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    footer {
+      background-color: #f5f5f5;
+      padding: 20px;
+      text-align: center;
+    }
 
-           <li class="nav-item">
-            <a class="nav-link" href="{% url 'admin:index'%}" target="_blank">Admin Panel</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout'%}">Logout</a>
-          </li>
-          
-          {% else %}
-          {% endif %}
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
-          </li>
-         
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-          </li>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
+    footer ul li {
+      display: inline;
+      margin: 0 10px;
+    }
 
-{% block page-header %}
+    footer ul li a {
+      color: #333;
+      text-decoration: none;
+    }
 
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %})">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-        {% block pic_title %}
-          <div class="site-heading">
-          
-          
-     
-            <h1>Jp NaN Blog</h1>
-            <span class="subheading">Let's learn Something New</span>
-          </div>
-               {% endblock  %}
+    footer p {
+      color: #666;
+    }
+
+.subheading {
+  font-weight: bold;
+}
+
+.text-black {
+    color: black;
+    font-weight: bold;
+ 
+}
+
+  </style>
+
+
+  
+
+
+  <script>
+    document.querySelector(".menu-button").addEventListener("click", function() {
+      var navLinks = document.querySelector(".nav-links");
+      if (navLinks.style.display === "none") {
+        navLinks.style.display = "flex";
+      } else {
+        navLinks.style.display = "none";
+      }
+    });
+  </script>
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %}); margin-top: 10px;">
+  <nav class="sidebar">
+    <!-- <div class="masthead">
+    <div class="brand">
+      <h1><a href="{% url 'home' %}">Ritik Blog</a></h1>
+    </div> -->
+    <ul class="nav-links">
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'blog' %}">Home</a>
+      </li>
+      {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'add_new' %}">New Post</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      {% else %}
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin:index' %}"  target="_blank">Login</a>
+      </li> -->
+    </ul>
+  </nav></div>
+  <div class=""></div>
+  <div class="container h-50">
+    <div class="row h-50 align-items-center">
+      <div class="col-lg-12 text-center">
+        <div class="site-heading">
+          <h1 class="display-4 text-Black">Shashank's Blog</h1>
+          <span class="subheading text-black">Let's learn Something New</span>
+
         </div>
       </div>
     </div>
-  </header>
-  
-{% endblock  %}
+  </div>
+</header>
+
 
 {% block content %}
+{% endblock %}
 
+<!-- Footer -->
+<footer>
+  <ul>
+    <li>
+      <a href="#">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </a>
+    </li>
+  </ul>
+  <p>Copyright &copy; Your Website 2024</p>
+</footer>
 
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
+<!-- Custom scripts for this template -->
+<script src="{% static 'js/clean-blog.min.js' %}"></script>
 
-{% endblock  %}
-
-
-
- <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <ul class="list-inline text-center">
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
-          <p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'vendor/jquery/jquery.min.js '%}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="{% static 'js/clean-blog.min.js'%}"></script>
-
-  <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="/static/base/js/main.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 </body>
-
 </html>

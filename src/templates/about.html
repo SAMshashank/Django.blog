@@ -1,19 +1,52 @@
 {% extends "base.html" %}
+
 {% load static %}
 
-
-
+<style>
+    .newBody {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    .newContainer {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 1em;
+    }
+    .newMasthead {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .newOverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    .newPageHeading {
+        padding: 100px 0;
+        color: white;
+        text-align: center;
+    }
+    .newContentSection {
+        padding: 40px 0;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+</style>
 
 {% block page-header %}
-
-
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %})">
-    <div class="overlay"></div>
-    <div class="container">
+  <header class="newMasthead" style="background-image: url({% static 'img/about-bg.jpg' %})">
+    <div class="newOverlay"></div>
+    <div class="newContainer">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
+          <div class="newPageHeading">
             <h1>About Me</h1>
             <span class="subheading">This is what I do.</span>
           </div>
@@ -21,19 +54,19 @@
       </div>
     </div>
   </header>
-
-
 {% endblock  %}
 
 {% block content %}
-
   <!-- Main Content -->
-  <div class="container">
+  <div class="newContainer">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+      <div class="col-lg-8 col-md-10 mx-auto newContentSection">
+        <h1>About Me</h1>
+        <p>Hello and welcome to my blog! My name is Shashank Kushwaha, and I'm a passionate writer with a love for words and the stories they can tell.
+
+          ## My Journey
+          
+          I started this blog as a platform to share my thoughts, ideas, and experiences with the world. Writing has always been a part of my life, from scribbling stories in my school notebooks to penning articles for various publications. This blog is a culmination of my love for writing and my desire to connect with like-minded individuals.</p>
       </div>
     </div>
   </div>

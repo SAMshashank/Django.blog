@@ -125,7 +125,13 @@ TEMPLATE_CONTEXT_PROCESSORS =[
 
 #ckeditor path
 
-CKEDITOR_UPLOAD_PATH = "uploads/" 
+CKEDITOR_UPLOAD_PATH = "uploads/"  # Optional: Specify the path where uploaded files will be stored.
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full',  # Customize the toolbar according to your needs.
+#     },
+# }
+
 
 
 # Internationalization
@@ -157,3 +163,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
